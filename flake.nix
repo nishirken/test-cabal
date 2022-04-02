@@ -16,6 +16,9 @@
             final.haskell-nix.cabalProject' {
               src = ./.;
               compiler-nix-name = "ghc8107";
+              modules = [{
+                reinstallableLibGhc = true;
+              }];
               shell = {
                 tools = {
                   cabal = "3.6.2.0";
@@ -23,7 +26,7 @@
                   haskell-language-server = "latest";
                   ormolu = "0.1.4.1";
                 };
-                buildInputs = [pkgs.haskellPackages.implicit-hie];
+                buildInputs = [pkgs.haskellPackages.implicit-hie pkgs.gcc];
                 withHoogle = true;
               };
             };
@@ -33,6 +36,6 @@
       flake = pkgs.${packageName}.flake {};
     in flake // {
       # Built by `nix build .`
-      defaultPackage = flake.packages."${packageName}:exe:${packageName}";
+      defaultPackage = flake.packages."${packageName}:exe:${packageName}-exe";
     });
 }

@@ -1,0 +1,10 @@
+cradle:
+  cabal:
+    - path: "app/Main.hs"
+      component: "test-cabal:exe:test-cabal-exe"
+
+    - path: "tests"
+      component: "test-cabal:test:test-cabal-test"
+
+    - path: "app"
+      component: "test-cabal:test:test-cabal-test"
