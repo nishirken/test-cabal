@@ -17,7 +17,15 @@
               src = ./.;
               compiler-nix-name = "ghc8107";
               modules = [{
-                reinstallableLibGhc = true;
+                nonReinstallablePkgs =
+                  [ "rts" "ghc-heap" "ghc-prim" "integer-gmp" "integer-simple" "base"
+                    "deepseq" "array" "ghc-boot-th" "pretty" "template-haskell"
+                    "ghcjs-prim" "ghcjs-th" "ghc-boot"
+                    "ghc" "Win32" "array" "binary" "bytestring" "containers"
+                    "directory" "filepath" "ghc-boot" "ghc-compact" "ghc-prim"
+                    "hpc" "mtl" "parsec" "process" "text" "time" "transformers"
+                    "unix" "xhtml" "terminfo"
+                  ];
               }];
               shell = {
                 tools = {
